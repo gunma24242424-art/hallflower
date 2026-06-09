@@ -1,0 +1,916 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>근조화환 전문 배달</title>
+<meta name="description" content="장례식장 근조화환 당일 배달. 기본형부터 특특대형까지 다양한 장례화환. 전국 장례식장 직접 배달 서비스.">
+<link rel="icon" type="image/x-icon" href="https://ellflower.co.kr/img/favicon.ico">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;400;600;700&family=Noto+Sans+KR:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1C1917;
+    --ink-soft: #2E2B28;
+    --gold: #C8A96E;
+    --gold-light: #DFC28A;
+    --gold-dim: #8A6E3E;
+    --cream: #F5F2EB;
+    --fog: #E9E4DA;
+    --fog-dark: #D4CDBF;
+    --white: #FDFAF4;
+    --text-main: #1C1917;
+    --text-sub: #5C5549;
+    --text-muted: #9C9288;
+    --serif: 'Noto Serif KR', 'Batang', Georgia, serif;
+    --sans: 'Noto Sans KR', 'Malgun Gothic', sans-serif;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; font-size: 16px; }
+
+  body {
+    background: var(--cream);
+    color: var(--text-main);
+    font-family: var(--sans);
+    line-height: 1.7;
+  }
+
+  /* ── HERO ─────────────────────────────── */
+  .hero {
+    position: relative;
+    background: var(--ink);
+    overflow: hidden;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 80px 24px 60px;
+  }
+
+  .hero-bg {
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse 80% 60% at 50% 40%, #2A2520 0%, #1C1917 60%, #0E0C0A 100%);
+    z-index: 0;
+  }
+
+  /* Ink-wash chrysanthemum SVG motif */
+  .hero-chrysanthemum {
+    position: absolute;
+    right: -60px; bottom: -60px;
+    width: 480px; height: 480px;
+    opacity: 0.06;
+    z-index: 0;
+    pointer-events: none;
+  }
+  .hero-chrysanthemum2 {
+    position: absolute;
+    left: -80px; top: -80px;
+    width: 360px; height: 360px;
+    opacity: 0.04;
+    z-index: 0;
+    pointer-events: none;
+    transform: rotate(30deg);
+  }
+
+  .hero-content { position: relative; z-index: 1; max-width: 680px; }
+
+  .hero-eyebrow {
+    display: inline-flex; align-items: center; gap: 10px;
+    font-family: var(--sans);
+    font-size: 0.72rem; font-weight: 500;
+    letter-spacing: 0.25em; text-transform: uppercase;
+    color: var(--gold);
+    border: 1px solid rgba(200,169,110,0.35);
+    padding: 6px 18px; border-radius: 2px;
+    margin-bottom: 28px;
+  }
+  .hero-eyebrow::before,
+  .hero-eyebrow::after { content: ''; display: block; width: 20px; height: 1px; background: var(--gold-dim); }
+
+  .hero-title {
+    font-family: var(--serif);
+    font-size: clamp(2.2rem, 6vw, 4rem);
+    font-weight: 700;
+    color: var(--white);
+    letter-spacing: -0.01em;
+    line-height: 1.25;
+    margin-bottom: 16px;
+  }
+  .hero-title span { color: var(--gold); }
+
+  .hero-sub {
+    font-family: var(--sans);
+    font-size: clamp(0.9rem, 2vw, 1.05rem);
+    color: rgba(245,242,235,0.65);
+    font-weight: 300;
+    letter-spacing: 0.04em;
+    margin-bottom: 44px;
+    line-height: 1.9;
+  }
+
+  .hero-cta {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: var(--gold);
+    color: var(--ink);
+    font-family: var(--sans); font-size: 0.95rem; font-weight: 600;
+    padding: 15px 36px; border-radius: 2px;
+    text-decoration: none;
+    letter-spacing: 0.06em;
+    transition: background 0.2s, transform 0.15s;
+    border: none; cursor: pointer;
+  }
+  .hero-cta:hover { background: var(--gold-light); transform: translateY(-2px); }
+
+  .hero-phone {
+    display: block; margin-top: 20px;
+    color: rgba(245,242,235,0.5);
+    font-size: 0.82rem; letter-spacing: 0.12em;
+  }
+  .hero-phone a { color: var(--gold-dim); text-decoration: none; font-weight: 500; }
+
+  /* ── TOC NAV ──────────────────────────── */
+  .toc-bar {
+    position: sticky; top: 0; z-index: 100;
+    background: var(--ink-soft);
+    border-bottom: 1px solid rgba(200,169,110,0.2);
+    padding: 0 20px;
+  }
+  .toc-inner {
+    max-width: 1100px; margin: 0 auto;
+    display: flex; align-items: center; gap: 0;
+    overflow-x: auto; scrollbar-width: none;
+  }
+  .toc-inner::-webkit-scrollbar { display: none; }
+
+  .toc-logo {
+    font-family: var(--serif); font-size: 0.85rem;
+    color: var(--gold); white-space: nowrap;
+    padding: 14px 20px 14px 0;
+    border-right: 1px solid rgba(200,169,110,0.2);
+    margin-right: 8px; letter-spacing: 0.04em;
+  }
+
+  .toc-inner a {
+    display: block; white-space: nowrap;
+    padding: 14px 16px;
+    font-size: 0.78rem; font-weight: 500;
+    color: rgba(245,242,235,0.6);
+    text-decoration: none; letter-spacing: 0.05em;
+    border-bottom: 2px solid transparent;
+    transition: color 0.2s, border-color 0.2s;
+  }
+  .toc-inner a:hover { color: var(--gold); border-bottom-color: var(--gold); }
+  .toc-inner a.active { color: var(--gold); border-bottom-color: var(--gold); }
+
+  /* ── LAYOUT WRAPPER ──────────────────── */
+  .page-wrap { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+
+  /* ── SECTION BASE ───────────────────── */
+  .section { padding: 80px 0; }
+  .section + .section { border-top: 1px solid var(--fog-dark); }
+
+  .section-label {
+    display: inline-flex; align-items: center; gap: 10px;
+    font-size: 0.7rem; font-weight: 600;
+    letter-spacing: 0.28em; text-transform: uppercase;
+    color: var(--gold-dim); margin-bottom: 12px;
+  }
+  .section-label::before { content: ''; display: block; width: 24px; height: 1px; background: var(--gold-dim); }
+
+  .section-title {
+    font-family: var(--serif);
+    font-size: clamp(1.5rem, 3.5vw, 2.2rem);
+    font-weight: 700; color: var(--ink);
+    letter-spacing: -0.01em; line-height: 1.3;
+    margin-bottom: 12px;
+  }
+  .section-desc {
+    font-size: 0.92rem; color: var(--text-sub);
+    line-height: 1.85; margin-bottom: 40px;
+    max-width: 520px;
+  }
+
+  /* ── NOTICE BAND ──────────────────── */
+  .notice-band {
+    background: var(--ink-soft);
+    padding: 14px 24px;
+    display: flex; align-items: center; justify-content: center;
+    gap: 20px; flex-wrap: wrap;
+  }
+  .notice-item {
+    display: flex; align-items: center; gap: 8px;
+    font-size: 0.78rem; color: rgba(245,242,235,0.7);
+    letter-spacing: 0.04em;
+  }
+  .notice-item .dot {
+    width: 5px; height: 5px; border-radius: 50%;
+    background: var(--gold);
+  }
+
+  /* ── PRODUCTS ───────────────────────── */
+  .products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+    gap: 20px;
+  }
+
+  .product-card {
+    background: var(--white);
+    border: 1px solid var(--fog-dark);
+    border-radius: 3px;
+    overflow: hidden;
+    transition: box-shadow 0.25s, transform 0.2s, border-color 0.25s;
+    position: relative;
+    cursor: pointer;
+  }
+  .product-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px rgba(28,25,23,0.12);
+    border-color: var(--gold);
+  }
+
+  .product-badge {
+    position: absolute; top: 12px; left: 12px; z-index: 2;
+    font-size: 0.65rem; font-weight: 600; letter-spacing: 0.12em;
+    text-transform: uppercase;
+    background: var(--gold); color: var(--ink);
+    padding: 3px 9px; border-radius: 1px;
+  }
+  .product-badge.special { background: var(--ink); color: var(--gold); }
+
+  .product-img-wrap {
+    width: 100%; aspect-ratio: 4/3;
+    background: var(--fog);
+    overflow: hidden; position: relative;
+  }
+  .product-img-wrap img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    transition: transform 0.35s ease;
+  }
+  .product-card:hover .product-img-wrap img { transform: scale(1.04); }
+
+  /* SVG placeholder removed - using real images */
+
+  .product-info { padding: 18px 18px 20px; }
+  .product-name {
+    font-family: var(--serif);
+    font-size: 1rem; font-weight: 600;
+    color: var(--ink); margin-bottom: 4px;
+  }
+  .product-desc {
+    font-size: 0.78rem; color: var(--text-muted);
+    line-height: 1.6; margin-bottom: 14px;
+  }
+  .product-price-row {
+    display: flex; align-items: baseline;
+    justify-content: space-between;
+  }
+  .product-price {
+    font-family: var(--serif);
+    font-size: 1.2rem; font-weight: 700;
+    color: var(--ink);
+  }
+  .product-price small {
+    font-family: var(--sans);
+    font-size: 0.72rem; font-weight: 400;
+    color: var(--text-muted); margin-left: 2px;
+  }
+  .product-order-btn {
+    font-size: 0.72rem; font-weight: 600;
+    letter-spacing: 0.08em;
+    color: var(--gold-dim);
+    border: 1px solid var(--gold-dim);
+    padding: 5px 12px; border-radius: 1px;
+    text-decoration: none;
+    transition: background 0.15s, color 0.15s;
+  }
+  .product-order-btn:hover {
+    background: var(--gold-dim); color: var(--white);
+  }
+
+  /* ── FEATURES / HOW ─────────────────── */
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1px;
+    background: var(--fog-dark);
+    border: 1px solid var(--fog-dark);
+    border-radius: 3px; overflow: hidden;
+    margin-top: 40px;
+  }
+  .feature-item {
+    background: var(--white);
+    padding: 30px 24px;
+    transition: background 0.2s;
+  }
+  .feature-item:hover { background: var(--fog); }
+  .feature-num {
+    font-family: Georgia, serif;
+    font-size: 2rem; font-weight: 300;
+    color: var(--fog-dark); line-height: 1;
+    margin-bottom: 14px;
+  }
+  .feature-title {
+    font-family: var(--serif);
+    font-size: 0.95rem; font-weight: 700;
+    color: var(--ink); margin-bottom: 8px;
+  }
+  .feature-desc {
+    font-size: 0.8rem; color: var(--text-sub); line-height: 1.7;
+  }
+
+  /* ── RIBBON GUIDE ───────────────────── */
+  .ribbon-section { background: var(--ink); }
+  .ribbon-section .section-title { color: var(--white); }
+  .ribbon-section .section-label { color: var(--gold-dim); }
+  .ribbon-section .section-desc { color: rgba(245,242,235,0.6); }
+
+  .ribbon-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 16px;
+  }
+  .ribbon-card {
+    border: 1px solid rgba(200,169,110,0.2);
+    border-radius: 2px; padding: 20px;
+    transition: border-color 0.2s;
+  }
+  .ribbon-card:hover { border-color: var(--gold); }
+  .ribbon-rel {
+    font-size: 0.7rem; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--gold-dim); font-weight: 600; margin-bottom: 10px;
+  }
+  .ribbon-text {
+    font-family: var(--serif);
+    font-size: 1.05rem; font-weight: 600; color: var(--white);
+    line-height: 1.5;
+  }
+  .ribbon-note {
+    font-size: 0.75rem; color: rgba(245,242,235,0.45);
+    margin-top: 8px; line-height: 1.6;
+  }
+
+  /* ── PROCESS ─────────────────────────── */
+  .process-steps {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0; position: relative;
+  }
+  .process-steps::before {
+    content: '';
+    position: absolute;
+    top: 28px; left: 10%; right: 10%;
+    height: 1px; background: var(--fog-dark);
+    z-index: 0;
+  }
+  .process-step {
+    padding: 0 20px;
+    text-align: center;
+    position: relative; z-index: 1;
+  }
+  .step-circle {
+    width: 56px; height: 56px;
+    border: 1.5px solid var(--gold);
+    border-radius: 50%;
+    background: var(--white);
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 16px;
+    font-family: Georgia, serif;
+    font-size: 1.1rem; color: var(--gold-dim);
+  }
+  .step-title {
+    font-family: var(--serif);
+    font-size: 0.9rem; font-weight: 700;
+    color: var(--ink); margin-bottom: 6px;
+  }
+  .step-desc {
+    font-size: 0.77rem; color: var(--text-sub); line-height: 1.7;
+  }
+
+  /* ── FAQ ──────────────────────────────── */
+  .faq-list { max-width: 720px; }
+  .faq-item {
+    border-bottom: 1px solid var(--fog-dark);
+  }
+  .faq-q {
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 16px;
+    padding: 22px 0;
+    cursor: pointer;
+    font-family: var(--serif);
+    font-size: 1rem; font-weight: 600;
+    color: var(--ink);
+    list-style: none;
+    user-select: none;
+  }
+  .faq-q::after {
+    content: '+';
+    font-size: 1.3rem; font-weight: 300;
+    color: var(--gold-dim); flex-shrink: 0;
+    transition: transform 0.25s;
+  }
+  .faq-item.open .faq-q::after { transform: rotate(45deg); }
+  .faq-a {
+    font-size: 0.88rem; color: var(--text-sub);
+    line-height: 1.85; padding-bottom: 20px;
+    display: none;
+  }
+  .faq-item.open .faq-a { display: block; }
+
+  /* ── CTA BOTTOM ───────────────────────── */
+  .cta-bottom {
+    background: var(--ink);
+    text-align: center;
+    padding: 80px 24px;
+  }
+  .cta-bottom .cta-title {
+    font-family: var(--serif);
+    font-size: clamp(1.4rem, 3.5vw, 2.2rem);
+    font-weight: 700; color: var(--white);
+    margin-bottom: 12px;
+  }
+  .cta-bottom .cta-sub {
+    font-size: 0.9rem; color: rgba(245,242,235,0.55);
+    margin-bottom: 36px; line-height: 1.8;
+  }
+  .cta-row {
+    display: flex; align-items: center; justify-content: center;
+    gap: 14px; flex-wrap: wrap;
+  }
+  .btn-primary {
+    background: var(--gold); color: var(--ink);
+    font-family: var(--sans); font-size: 0.9rem; font-weight: 600;
+    padding: 14px 32px; border-radius: 2px;
+    text-decoration: none; letter-spacing: 0.05em;
+    transition: background 0.2s;
+  }
+  .btn-primary:hover { background: var(--gold-light); }
+  .btn-outline {
+    border: 1px solid rgba(200,169,110,0.45); color: rgba(245,242,235,0.75);
+    font-family: var(--sans); font-size: 0.9rem; font-weight: 400;
+    padding: 13px 28px; border-radius: 2px;
+    text-decoration: none; letter-spacing: 0.04em;
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .btn-outline:hover { border-color: var(--gold); color: var(--gold); }
+
+  /* ── FOOTER ───────────────────────────── */
+  footer {
+    background: #111;
+    padding: 32px 24px;
+    text-align: center;
+  }
+  .footer-logo {
+    font-family: var(--serif); font-size: 1rem;
+    color: var(--gold-dim); margin-bottom: 10px;
+    letter-spacing: 0.08em;
+  }
+  .footer-text {
+    font-size: 0.74rem; color: rgba(245,242,235,0.3);
+    line-height: 1.8; letter-spacing: 0.02em;
+  }
+
+  /* ── RESPONSIVE ───────────────────────── */
+  @media (max-width: 720px) {
+    .process-steps {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+    .process-steps::before { display: none; }
+
+    .hero-chrysanthemum { width: 260px; height: 260px; right: -40px; bottom: -40px; }
+
+    .toc-logo { display: none; }
+  }
+
+  @media (max-width: 480px) {
+    .section { padding: 56px 0; }
+    .products-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
+  }
+
+  /* scrollbar */
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: var(--cream); }
+  ::-webkit-scrollbar-thumb { background: var(--fog-dark); border-radius: 3px; }
+</style>
+</head>
+<body>
+
+<!-- ═══ HERO ════════════════════════════════════ -->
+<section class="hero" id="top">
+  <div class="hero-bg"></div>
+
+  <!-- Ink-wash chrysanthemum motifs -->
+  <svg class="hero-chrysanthemum" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" fill="none">
+    <g stroke="white" stroke-width="0.8">
+      <!-- chrysanthemum petal rings -->
+      <ellipse cx="200" cy="200" rx="160" ry="30" transform="rotate(0 200 200)"/>
+      <ellipse cx="200" cy="200" rx="160" ry="30" transform="rotate(18 200 200)"/>
+      <ellipse cx="200" cy="200" rx="160" ry="30" transform="rotate(36 200 200)"/>
+      <ellipse cx="200" cy="200" rx="160" ry="30" transform="rotate(54 200 200)"/>
+      <ellipse cx="200" cy="200" rx="160" ry="30" transform="rotate(72 200 200)"/>
+      <ellipse cx="200" cy="200" rx="160" ry="30" transform="rotate(90 200 200)"/>
+      <ellipse cx="200" cy="200" rx="160" ry="30" transform="rotate(108 200 200)"/>
+      <ellipse cx="200" cy="200" rx="160" ry="30" transform="rotate(126 200 200)"/>
+      <ellipse cx="200" cy="200" rx="160" ry="30" transform="rotate(144 200 200)"/>
+      <ellipse cx="200" cy="200" rx="160" ry="30" transform="rotate(162 200 200)"/>
+      <!-- inner ring -->
+      <ellipse cx="200" cy="200" rx="90" ry="18" transform="rotate(9 200 200)"/>
+      <ellipse cx="200" cy="200" rx="90" ry="18" transform="rotate(27 200 200)"/>
+      <ellipse cx="200" cy="200" rx="90" ry="18" transform="rotate(45 200 200)"/>
+      <ellipse cx="200" cy="200" rx="90" ry="18" transform="rotate(63 200 200)"/>
+      <ellipse cx="200" cy="200" rx="90" ry="18" transform="rotate(81 200 200)"/>
+      <circle cx="200" cy="200" r="22" fill="white" opacity="0.4"/>
+    </g>
+  </svg>
+  <svg class="hero-chrysanthemum2" viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg" fill="none">
+    <g stroke="white" stroke-width="0.7">
+      <ellipse cx="150" cy="150" rx="120" ry="22" transform="rotate(0 150 150)"/>
+      <ellipse cx="150" cy="150" rx="120" ry="22" transform="rotate(20 150 150)"/>
+      <ellipse cx="150" cy="150" rx="120" ry="22" transform="rotate(40 150 150)"/>
+      <ellipse cx="150" cy="150" rx="120" ry="22" transform="rotate(60 150 150)"/>
+      <ellipse cx="150" cy="150" rx="120" ry="22" transform="rotate(80 150 150)"/>
+      <ellipse cx="150" cy="150" rx="120" ry="22" transform="rotate(100 150 150)"/>
+      <ellipse cx="150" cy="150" rx="120" ry="22" transform="rotate(120 150 150)"/>
+      <ellipse cx="150" cy="150" rx="120" ry="22" transform="rotate(140 150 150)"/>
+      <ellipse cx="150" cy="150" rx="120" ry="22" transform="rotate(160 150 150)"/>
+      <circle cx="150" cy="150" r="16" fill="white" opacity="0.3"/>
+    </g>
+  </svg>
+
+  <div class="hero-content">
+    <div class="hero-eyebrow">근조화환 전문 배달 서비스</div>
+    <h1 class="hero-title">
+      삼가 고인의<br>
+      <span>명복을 빕니다</span>
+    </h1>
+    <p class="hero-sub">
+      정성을 담은 근조화환으로 조의를 전하세요<br>
+      전국 장례식장 당일 배달 · 주문 후 3시간 내 도착
+    </p>
+    <a href="tel:1555-0042" class="hero-cta">지금 바로 주문하기</a>
+    <span class="hero-phone">24시간 온라인주문 가능 · <a href="https://21flower.com/shop/list.php?ca_id=20">온라인 주문하기</a></span>
+  </div>
+</section>
+
+<!-- ── 공지 배너 -->
+<div class="notice-band">
+  <div class="notice-item"><span class="dot"></span>전국 장례식장 당일 배달</div>
+  <div class="notice-item"><span class="dot"></span>주문 후 3시간 내 도착 보장</div>
+  <div class="notice-item"><span class="dot"></span>리본 문구 무료 맞춤 제작</div>
+  <div class="notice-item"><span class="dot"></span>24시간 365일 주문 접수</div>
+</div>
+
+<!-- ═══ 목차 ════════════════════════════════════ -->
+<nav class="toc-bar" role="navigation" aria-label="페이지 목차">
+  <div class="toc-inner">
+    <div class="toc-logo">hallflower</div>
+    <a href="#products">상품 안내</a>
+    <a href="#how">이용 방법</a>
+    <a href="#ribbon">리본 문구</a>
+    <a href="#features">서비스 특징</a>
+    <a href="#faq">자주 묻는 질문</a>
+    <a href="tel:1555-0042" style="color:var(--gold);margin-left:auto;">📞 주문 전화</a>
+  </div>
+</nav>
+
+<!-- ═══ PRODUCTS ═══════════════════════════════ -->
+<section class="section" id="products">
+  <div class="page-wrap">
+    <div class="section-label">상품 안내</div>
+    <h2 class="section-title">근조화환 라인업</h2>
+    <p class="section-desc">정성 가득한 꽃과 최고급 포장으로 조의를 전달합니다. 규모에 맞는 화환을 선택해 주세요.</p>
+
+    <div class="products-grid">
+
+      <!-- 1. 기본형 -->
+      <div class="product-card">
+        <div class="product-badge">기본</div>
+        <div class="product-img-wrap">
+          <img src="https://binjohwa.com/img/5.9.jpg" alt="기본형 근조화환" loading="lazy">
+        </div>
+        <div class="product-info">
+          <div class="product-name">기본형 근조화환</div>
+          <div class="product-desc">단정한 백합과 국화 구성. 소규모 빈소에 적합합니다.</div>
+          <div class="product-price-row">
+            <div class="product-price">59,000<small>원</small></div>
+            <a href="tel:1555-0042" class="product-order-btn">주문</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2. 고급형 -->
+      <div class="product-card">
+        <div class="product-badge">고급</div>
+        <div class="product-img-wrap">
+          <img src="https://binjohwa.com/img/7.9.jpg" alt="고급형 근조화환" loading="lazy">
+        </div>
+        <div class="product-info">
+          <div class="product-name">고급형 근조화환</div>
+          <div class="product-desc">프리미엄 카네이션·국화·장미 혼합. 격식 있는 빈소에 어울립니다.</div>
+          <div class="product-price-row">
+            <div class="product-price">79,000<small>원</small></div>
+            <a href="tel:1555-0042" class="product-order-btn">주문</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3. 특대형 -->
+      <div class="product-card">
+        <div class="product-badge special">특대</div>
+        <div class="product-img-wrap">
+          <img src="https://binjohwa.com/img/9.9.jpg" alt="특대형 근조화환" loading="lazy">
+        </div>
+        <div class="product-info">
+          <div class="product-name">특대형 근조화환</div>
+          <div class="product-desc">풍성한 볼륨감의 대형 화환. 중·대형 빈소에 권장합니다.</div>
+          <div class="product-price-row">
+            <div class="product-price">99,000<small>원</small></div>
+            <a href="tel:1555-0042" class="product-order-btn">주문</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4. 특특대형 -->
+      <div class="product-card">
+        <div class="product-badge special">최고급</div>
+        <div class="product-img-wrap">
+          <img src="https://binjohwa.com/img/149.jpg" alt="특특대형 근조화환" loading="lazy">
+        </div>
+        <div class="product-info">
+          <div class="product-name">특특대형 근조화환</div>
+          <div class="product-desc">최고급 수입 꽃으로 구성한 프리미엄 화환. 사회 저명인사 빈소 적합.</div>
+          <div class="product-price-row">
+            <div class="product-price">149,000<small>원</small></div>
+            <a href="tel:1555-0042" class="product-order-btn">주문</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 5. 4단 -->
+      <div class="product-card">
+        <div class="product-badge">4단</div>
+        <div class="product-img-wrap">
+          <img src="https://binjohwa.com/img/120.JPG" alt="4단 근조화환" loading="lazy">
+        </div>
+        <div class="product-info">
+          <div class="product-name">4단 근조화환</div>
+          <div class="product-desc">4단 구성의 웅장한 스탠드형 화환. 대형 빈소·공식 행사에 적합.</div>
+          <div class="product-price-row">
+            <div class="product-price">120,000<small>원</small></div>
+            <a href="tel:1555-0042" class="product-order-btn">주문</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 6. 오브제 화환 -->
+      <div class="product-card">
+        <div class="product-badge">오브제</div>
+        <div class="product-img-wrap">
+          <img src="https://binjohwa.com/img/o60.jpg" alt="오브제 화환" loading="lazy">
+        </div>
+        <div class="product-info">
+          <div class="product-name">오브제 화환 1단</div>
+          <div class="product-desc">현대적 디자인의 원형 오브제 화환. 심플하고 세련된 조의 표현.</div>
+          <div class="product-price-row">
+            <div class="product-price">60,000<small>원</small></div>
+            <a href="tel:1555-0042" class="product-order-btn">주문</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 7. 근조 영정바구니 -->
+      <div class="product-card">
+        <div class="product-badge">바구니</div>
+        <div class="product-img-wrap">
+          <img src="https://binjohwa.com/img/y5.9.jpg" alt="근조 영정바구니" loading="lazy">
+        </div>
+        <div class="product-info">
+          <div class="product-name">근조 영정바구니</div>
+          <div class="product-desc">영정 앞에 놓이는 소형 꽃바구니. 따뜻하고 경건한 분위기 연출.</div>
+          <div class="product-price-row">
+            <div class="product-price">59,000<small>원</small></div>
+            <a href="tel:1555-0042" class="product-order-btn">주문</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 8. 근조 화환 세트 (추가) -->
+      <div class="product-card">
+        <div class="product-badge special">오브제2단</div>
+        <div class="product-img-wrap">
+          <img src="https://binjohwa.com/img/o12.JPG" alt="오브제 2단화환" loading="lazy">
+        </div>
+        <div class="product-info">
+          <div class="product-name">오브제 화환 2단</div>
+          <div class="product-desc">오브제 1단화환 보다 더욱 웅장하고 품격 있는 마음으로 정중한 예를 표합니다.</div>
+          <div class="product-price-row">
+            <div class="product-price">120,000<small>원</small></div>
+            <a href="tel:1555-0042" class="product-order-btn">주문</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══ HOW TO ORDER ══════════════════════════ -->
+<section class="section" id="how" style="background: var(--white);">
+  <div class="page-wrap">
+    <div class="section-label">이용 방법</div>
+    <h2 class="section-title">간편한 4단계 주문</h2>
+    <p class="section-desc">전화 한 통으로 장례식장에 화환을 빠르게 배달해 드립니다.</p>
+
+    <div class="process-steps">
+      <div class="process-step">
+        <div class="step-circle">1</div>
+        <div class="step-title">전화 주문</div>
+        <div class="step-desc">24시간 전화 또는 홈페이지로 상품과 장례식장 정보를 알려주세요.</div>
+      </div>
+      <div class="process-step">
+        <div class="step-circle">2</div>
+        <div class="step-title">리본 문구 확인</div>
+        <div class="step-desc">보내시는 분 성함과 리본 문구를 확인해 드립니다. 맞춤 제작 무료.</div>
+      </div>
+      <div class="process-step">
+        <div class="step-circle">3</div>
+        <div class="step-title">결제 및 접수</div>
+        <div class="step-desc">계좌이체 또는 카드 결제 후 즉시 배달 접수됩니다.</div>
+      </div>
+      <div class="process-step">
+        <div class="step-circle">4</div>
+        <div class="step-title">장례식장 직배달</div>
+        <div class="step-desc">주문 후 3시간 내 전국 장례식장에 직접 배달 및 설치합니다.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ RIBBON GUIDE ══════════════════════════ -->
+<section class="section ribbon-section" id="ribbon">
+  <div class="page-wrap">
+    <div class="section-label">리본 문구 안내</div>
+    <h2 class="section-title">종교·관계별 추천 문구</h2>
+    <p class="section-desc">고인과의 관계, 종교에 따라 적절한 리본 문구를 선택하시면 됩니다.</p>
+
+    <div class="ribbon-grid">
+      <div class="ribbon-card">
+        <div class="ribbon-rel">일반 · 무교</div>
+        <div class="ribbon-text">삼가 고인의 명복을 빕니다</div>
+        <div class="ribbon-note">가장 보편적으로 사용되는 문구입니다.</div>
+      </div>
+      <div class="ribbon-card">
+        <div class="ribbon-rel">기독교</div>
+        <div class="ribbon-text">하나님의 품 안에서 평안하소서</div>
+        <div class="ribbon-note">또는 "주 안에서 영원한 안식을" 사용 가능.</div>
+      </div>
+      <div class="ribbon-card">
+        <div class="ribbon-rel">불교</div>
+        <div class="ribbon-text">극락왕생 하옵소서</div>
+        <div class="ribbon-note">또는 "불보살님 가호 아래 왕생극락" 사용 가능.</div>
+      </div>
+      <div class="ribbon-card">
+        <div class="ribbon-rel">천주교</div>
+        <div class="ribbon-text">하느님 나라에서 평화로이 쉬소서</div>
+        <div class="ribbon-note">또는 "영원한 안식을 누리소서" 사용 가능.</div>
+      </div>
+      <div class="ribbon-card">
+        <div class="ribbon-rel">직장 동료</div>
+        <div class="ribbon-text">삼가 고인의 명복을 빕니다<br><small style="font-size:0.8rem">○○주식회사 임직원 일동</small></div>
+        <div class="ribbon-note">단체명 아래 '일동' 또는 '드림'을 붙입니다.</div>
+      </div>
+      <div class="ribbon-card">
+        <div class="ribbon-rel">지인 · 친구</div>
+        <div class="ribbon-text">고인의 명복을 빌며<br><small style="font-size:0.8rem">○○○ 올림</small></div>
+        <div class="ribbon-note">개인 이름은 '올림' 또는 '드림'으로 마무리.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FEATURES ══════════════════════════════ -->
+<section class="section" id="features">
+  <div class="page-wrap">
+    <div class="section-label">서비스 특징</div>
+    <h2 class="section-title">hallflower를 선택하는 이유</h2>
+    <p class="section-desc">빠르고 정확한 배달, 품질 보증, 세심한 서비스로 신뢰를 드립니다.</p>
+
+    <div class="features-grid">
+      <div class="feature-item">
+        <div class="feature-num">01</div>
+        <div class="feature-title">3시간 내 배달 보장</div>
+        <div class="feature-desc">주문 접수 후 전국 장례식장에 3시간 이내 도착을 보장합니다. 배달 완료 후 사진으로 확인해 드립니다.</div>
+      </div>
+      <div class="feature-item">
+        <div class="feature-num">02</div>
+        <div class="feature-title">신선한 꽃 품질 보증</div>
+        <div class="feature-desc">매일 경매 입고된 신선한 꽃만 사용합니다. 품질에 만족하지 못하시면 100% 환불해 드립니다.</div>
+      </div>
+      <div class="feature-item">
+        <div class="feature-num">03</div>
+        <div class="feature-title">리본 무료 맞춤 제작</div>
+        <div class="feature-desc">보내시는 분 성함, 종교, 관계에 맞는 리본 문구를 무료로 맞춤 제작해 드립니다.</div>
+      </div>
+      <div class="feature-item">
+        <div class="feature-num">04</div>
+        <div class="feature-title">365일 24시간 운영</div>
+        <div class="feature-desc">연중무휴 24시간 주문을 받습니다. 새벽이나 공휴일에도 지체 없이 처리합니다.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FAQ ════════════════════════════════════ -->
+<section class="section" id="faq" style="background: var(--white);">
+  <div class="page-wrap">
+    <div class="section-label">자주 묻는 질문</div>
+    <h2 class="section-title">궁금한 점이 있으신가요?</h2>
+    <p class="section-desc">자주 문의하시는 내용을 정리했습니다.</p>
+
+    <div class="faq-list">
+
+      <div class="faq-item">
+        <div class="faq-q">주문 후 얼마나 걸려 배달되나요?</div>
+        <div class="faq-a">
+          주문 접수 후 평균 2~4시간 이내에 장례식장에 도착합니다. 도심 지역은 평균 3시간, 외곽 지역은 2시간 30분~4시간을 예상해 주세요. 주문 완료 후 배달 기사가 장례식장에 도착하면 설치 완료 사진을 카카오톡으로 발송해 드립니다.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">리본 문구는 어떻게 정하면 되나요?</div>
+        <div class="faq-a">
+          주문 시 고인과의 관계(직장 동료, 지인, 친척 등)와 종교를 알려주시면 저희가 적합한 문구를 추천해 드립니다. 직접 원하시는 문구가 있으시면 그대로 적어드립니다. 리본에는 보통 '보내는 분 성함'과 '조의 문구' 두 가지가 들어갑니다.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">취소나 환불이 가능한가요?</div>
+        <div class="faq-a">
+          배달 출발 전이라면 전액 취소·환불이 가능합니다. 이미 배달이 시작된 경우에는 취소가 어려우나, 꽃 품질에 이상이 있는 경우에는 사진 확인 후 전액 환불 또는 재배달로 처리해 드립니다. 취소 요청은 주문 접수 전화나 카카오톡으로 빠르게 연락해 주세요.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">전국 모든 장례식장에 배달되나요?</div>
+        <div class="faq-a">
+          전국 주요 장례식장에 배달 가능합니다. 다만 일부 도서 산간 지역이나 소규모 개인 장례식장의 경우 배달이 어려울 수 있습니다. 장례식장 명칭을 알려주시면 배달 가능 여부를 즉시 확인해 드립니다. 배달 불가 지역의 경우 사전에 안내해 드리며, 결제는 이루어지지 않습니다.
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CTA BOTTOM ════════════════════════════ -->
+<div class="cta-bottom">
+  <div class="cta-title">지금 바로 주문하세요</div>
+  <p class="cta-sub">24시간 주문 · 주문 후 3시간 내 장례식장 직배달<br>리본 문구 무료 맞춤 제작</p>
+  <div class="cta-row">
+    <a href="tel:1555-0042" class="btn-primary">📞 전화 주문하기</a>
+    <a href="https://21flower.com/shop/list.php?ca_id=20" class="btn-outline">상품 둘러보기</a>
+  </div>
+</div>
+
+<!-- ═══ FOOTER ════════════════════════════════ -->
+<footer>
+  <div class="footer-logo">hallflower.com</div>
+  <p class="footer-text">
+    근조화환 전문 배달 서비스
+  </p>
+</footer>
+
+<script>
+  // TOC active link on scroll
+  const sections = document.querySelectorAll('section[id], div[id]');
+  const navLinks = document.querySelectorAll('.toc-inner a[href^="#"]');
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        navLinks.forEach(a => a.classList.remove('active'));
+        const active = document.querySelector(`.toc-inner a[href="#${entry.target.id}"]`);
+        if (active) active.classList.add('active');
+      }
+    });
+  }, { rootMargin: '-30% 0px -60% 0px' });
+
+  sections.forEach(s => observer.observe(s));
+
+  // FAQ accordion
+  document.querySelectorAll('.faq-q').forEach(q => {
+    q.addEventListener('click', () => {
+      const item = q.parentElement;
+      const wasOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+      if (!wasOpen) item.classList.add('open');
+    });
+  });
+</script>
+</body>
+</html>
